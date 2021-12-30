@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.wl.ApiManager" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.wl.ApiManager/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.wl.ApiManager/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.wl.Nacos/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.wl.Nacos/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.wl.WorkFlow" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.wl.WorkFlow/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.wl.WorkFlow/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.wl.common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.wl.common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.wl.common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.wl.eureka/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.wl.eureka2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.wl.gataway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.wl.gataway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.wl.gataway/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

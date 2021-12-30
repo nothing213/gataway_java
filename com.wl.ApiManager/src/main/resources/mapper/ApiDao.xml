@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.dao.ApiDao">
+
+    <insert id="insertApi" parameterType="OpenApiData" useGeneratedKeys="true"  keyProperty="id">
+        insert into openapilist(id,apiName,openApi,info,servers,methods,paths,requestBody,responseResult,group_api)
+        values(#{id},#{apiName},#{openApi},#{info},#{servers},#{methods},#{paths},#{requestBody},#{responseResult},#{group_api});
+    </insert>
+
+    <insert id="import_swagger" parameterType="OpenApiData" useGeneratedKeys="true"  keyProperty="openApiData.id">
+        insert into openapilist(apiName,openApi,info,servers,methods,paths,requestBody,responseResult)
+        values(#{apiName},#{openApi},#{info},#{servers},#{methods},#{paths},#{requestBody},#{responseResult});
+    </insert>
+
+    <select id="findAllApi"  resultType="OpenApiData">
+        select * from openapilist;
+    </select>
+
+    <select id="findApiByName"  resultType="OpenApiData">
+        select * from openapilist where apiName=#{apiName};
+    </select>
+    <!--<resultMap id="BaseResultMap" type="com.atguigu.springcloud.entities.Payment">-->
+    <!--<id column="id" property="id" jdbcType="BIGINT"/>-->
+    <!--<id column="serial" property="serial" jdbcType="VARCHAR"/>-->
+    <!--</resultMap>-->
+    <!--<select id="getPaymentById" parameterType="Long" resultMap="BaseResultMap">-->
+    <!--select * from payment where id=#{id};-->
+    <!--</select>-->
+
+</mapper>

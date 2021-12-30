@@ -1,0 +1,57 @@
+spring:
+  #数据源配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/process?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: root
+  #nacos配置
+  application:
+    name: WorkFlow
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #配置Nacos地址
+
+
+
+  #freemarker模板配置
+  freemarker:
+    suffix: .ftl
+    cache: false
+    charset: UTF-8
+    contentType: text/html
+    requestContextAttribute: ctx
+    templateEncoding: UTF-8
+    templateLoaderPath: classpath:/templates/
+    settings:
+      defaultEncoding: UTF-8
+      url_escaping_charset: UTF-8
+      locale: zh_CN
+  http:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+    activiti:
+      check-process-definitions: false
+server:
+  servlet:
+    session:
+      timeout: 3600
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+---
+#环境
+
+server:
+  port: 8002
+#
+#mybatis:
+#  mapperLocations: classpath:mapper/*.xml
+#  type-aliases-package: com.activiti6.bean

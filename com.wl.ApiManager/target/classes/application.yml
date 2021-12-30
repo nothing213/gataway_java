@@ -1,0 +1,42 @@
+spring:
+  #数据源配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/process?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: root
+
+  application:
+    name: ApiManager
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #配置Nacos地址
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8719
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+server:
+  servlet:
+    session:
+      timeout: 3600
+
+---
+#环境
+
+server:
+  port: 8001
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.bean
