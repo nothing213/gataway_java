@@ -22,18 +22,14 @@ public class RegisterController {
     @Resource
     private RegisterService registerService;
 
-    @RequestMapping( value = "/admin/register", method = RequestMethod.POST)
-    public CommonResult register(@RequestBody  User user) {
-        System.out.println(user.getUsername()+" "+user.getPassword());
+    @RequestMapping(value = "/admin/register", method = RequestMethod.POST)
+    public CommonResult register(@RequestBody User user) {
+        System.out.println(user.getUsername() + " " + user.getPassword());
         int flag = registerService.registerUser(user);
         System.out.println(flag);
-        if(flag > 0)
-            return  CommonResult.success(user.getUsername());
+        if (flag > 0)
+            return CommonResult.success(user.getUsername());
         else
             return CommonResult.validateFailed();
-//        if (user.getUsername().equals("张三") && user.getPassword().equals("123456"))
-//            return CommonResult.success("张三");
-//        else
-//            return CommonResult.validateFailed();
     }
 }

@@ -7,12 +7,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="com.wl.WorkFlow" />
+        <module name="gateway2" />
         <module name="com.wl.ApiManager" />
+        <module name="com.wl.Feign" />
+        <module name="com.wl.common" />
+        <module name="FeignTwo" />
+        <module name="com.wl.ApiManager3" />
+        <module name="com.wl.WorkFlow" />
         <module name="com.wl.eurake" />
         <module name="com.wl.eureka" />
         <module name="com.wl.eureka2" />
-        <module name="com.wl.common" />
+        <module name="ApiManager4" />
         <module name="com.wl.Nacos" />
         <module name="com.wl.gataway" />
       </profile>
@@ -23,7 +28,11 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ApiManager4" options="-parameters" />
+      <module name="FeignTwo" options="-parameters" />
       <module name="com.wl.ApiManager" options="-parameters" />
+      <module name="com.wl.ApiManager3" options="-parameters" />
+      <module name="com.wl.Feign" options="-parameters" />
       <module name="com.wl.Nacos" options="-parameters" />
       <module name="com.wl.WorkFlow" options="-parameters" />
       <module name="com.wl.common" options="-parameters" />
@@ -31,6 +40,7 @@
       <module name="com.wl.eureka" options="-parameters" />
       <module name="com.wl.eureka2" options="-parameters" />
       <module name="com.wl.gataway" options="-parameters" />
+      <module name="gateway2" options="-parameters" />
     </option>
   </component>
 </project>

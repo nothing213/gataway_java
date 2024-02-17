@@ -1,0 +1,18 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-order-service
+  cloud:
+    inetutils:
+      preferred-networks: 192.168.2.4
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #配置Nacos地址
+        service-name: cloud-order-service
+        hostname: 192.168.2.5
+
+
+
+
