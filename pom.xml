@@ -16,6 +16,11 @@
     <module>com.wl.Nacos</module>
     <module>com.wl.eureka</module>
     <module>com.wl.eureka2</module>
+    <module>com.wl.ApiManager3</module>
+      <module>com.wl.Feign</module>
+      <module>gateway2</module>
+      <module>FeignTwo</module>
+      <module>ApiManager4</module>
 
   </modules>
 
@@ -34,6 +39,7 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.2.2.RELEASE</version>
+<!--    2.2.2.RELEASE-->
     <relativePath/>
   </parent>
   <properties>
