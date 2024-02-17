@@ -1,0 +1,36 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: OpenFeign2
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/process?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: root
+  cloud:
+    inetutils:
+      preferred-networks: 192.168.2.4
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #配置Nacos地址
+        service-name: cloud-order-service
+        hostname: 192.168.2.5
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.wl
+
+ApiManager:
+  ribbon:
+    #轮询
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+    #随机算法
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    #重试算法,该算法先按照轮询的策略获取服务,如果获取服务失败则在指定的时间内会进行重试，获取可用的服务
+    #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RetryRule
+    #加权法,会根据平均响应时间计算所有服务的权重，响应时间越快服务权重越大被选中的概率越大。刚启动时如果同统计信息不足，则使用轮询的策略，等统计信息足够会切换到自身规则。
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.ZoneAvoidanceRule
+    NFLoadBalancerRuleClassName: com.wl.controller.MyRule

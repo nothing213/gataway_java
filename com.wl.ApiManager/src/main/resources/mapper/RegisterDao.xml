@@ -3,7 +3,7 @@
 
 <mapper namespace="com.dao.RegisterDao">
 
-    <insert id="registerUser" parameterType="User" useGeneratedKeys="true" keyProperty="user.id" >
+    <insert id="registerUser" parameterType="User" useGeneratedKeys="true" keyProperty="user.id">
         insert into UserList(username,password)
         values(#{user.username},#{user.password});
     </insert>

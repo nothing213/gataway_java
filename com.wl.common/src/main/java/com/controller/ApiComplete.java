@@ -25,11 +25,12 @@ public class ApiComplete {
 
     /**
      * 调用对方接口方法
+     *
      * @param path 对方或第三方提供的路径
      * @param data 向对方或第三方发送的数据，大多数情况下给对方发送JSON数据让对方解析
      */
     @GetMapping("/interfaceUtil/{data}/{path}")
-    public static Object interfaceUtil(@PathVariable String path,@PathVariable String data) {
+    public static Object interfaceUtil(@PathVariable String path, @PathVariable String data) {
         Object result = null;
         try {
 
@@ -78,7 +79,7 @@ public class ApiComplete {
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String str = "";
             while ((str = br.readLine()) != null) {
-                str=new String(str.getBytes(),"UTF-8");//解决中文乱码问题
+                str = new String(str.getBytes(), "UTF-8");//解决中文乱码问题
 //                System.out.println(str);
                 result = str;
 
@@ -99,74 +100,11 @@ public class ApiComplete {
 
     public static void main(String[] args) {
 
-        // interfaceUtil("http://localhost:8848/helloApi", "");//get请求
-        Object result = interfaceUtil("http://localhost:8001/v2/api-docs ", "");//get请求
-        String result_json = (String) result;
-        JsonParser jp = new JsonParser();
-        JsonObject jo = jp.parse(result_json).getAsJsonObject();
-//        System.out.println(jo);
-        JsonElement hosts = jo.get("host");
-        System.out.println("hosts:"+hosts.getAsString());
-        Set<String> paths = jo.get("paths").getAsJsonObject().keySet();
-        String[] methods = new String[1000];
-        Object[] paths_array =  paths.toArray();
-        String[] tags = new String[1000];
-        String[] api_name = new String[1000];
-        JsonElement info = null;
-        for(int i = 0;i < paths_array.length;i++)
-        {
-            info = jo.get("info");
-            methods[i] = String.valueOf(jo.get("paths").getAsJsonObject().get((String) paths_array[i]).getAsJsonObject().keySet());
-            if(jo.get("paths").getAsJsonObject().get((String) paths_array[i]).getAsJsonObject().get("post")!=null)
-            {
-                api_name[i] = String.valueOf(jo.get("paths").getAsJsonObject().get((String) paths_array[i]).getAsJsonObject().get("post").getAsJsonObject().get("summary"));
-                tags[i] = String.valueOf(jo.get("paths").getAsJsonObject().get((String) paths_array[i]).getAsJsonObject().get("post").getAsJsonObject().get("tags"));
 
-            }
-            else if(jo.get("paths").getAsJsonObject().get((String) paths_array[i]).getAsJsonObject().get("get") != null)
-            {
-                api_name[i] = String.valueOf(jo.get("paths").getAsJsonObject().get((String) paths_array[i]).getAsJsonObject().get("get").getAsJsonObject().get("summary"));
-                tags[i] = String.valueOf(jo.get("paths").getAsJsonObject().get((String) paths_array[i]).getAsJsonObject().get("get").getAsJsonObject().get("tags"));
-
-            }
-        }
-
-        System.out.println(info.getAsJsonObject().toString().substring(1,info.getAsJsonObject().toString().length()-1));
-
-        for(int i = 0; i< paths_array.length;i++)
-        {
-            System.out.println(tags[i].substring(2,tags[i].length()-2));
-        }
-//        System.out.println(jo.get("paths").getAsJsonObject().keySet());
-        JsonElement Tags = jo.get("tags");
-
-
-
-
-
-
-
-
-//        JSONArray Tags = (JSONArray) jsonObject.get("tags");
-//        JSONObject Paths = (JSONObject) jsonObject.get("paths");
-//        System.out.println(Paths.get("/admin/login"));
-//
-//        for(int i = 0;i < Tags.size();i++)
-//        {
-//            JSONObject temple = (JSONObject) Tags.get(i);
-////            JSONObject temple_Paths = (JSONObject) Paths.get(i);
-//            System.out.println("name:"+temple.get("name"));
-////            System.out.println("paths:"+temple_Paths.get("paths"));
-//        }
-
-
-//        for(Object jsonArray:Tags)
-//        {
-//            System.out.println(jsonArray);
-//        }
-
-        /*interfaceUtil("http://172.83.28.221:7001/NSRTRegistration/test/add.do",
-             "id=8888888&name=99999999");*///post请求
+//        int query = 111;
+        Object result = interfaceUtil("http://localhost:8001/hello2",
+                "111");
+        System.out.println(result);
     }
 
 }

@@ -9,7 +9,7 @@
 
 <div>
     <form action="/do_api" method="post">
-        id  <input name="id" type="number" value="id">
+        id <input name="id" type="number" value="id">
         </br>
         name:<input name="Apiname" type="text" value="">
         </br>
@@ -40,7 +40,7 @@
         <#--<#assign json=apiList />-->
         <#--<#list json.data as item>-->
 
-            <#--id:${item.host}-->
+        <#--id:${item.host}-->
 
         <#--</#list>-->
 

@@ -21,18 +21,15 @@ import java.util.Map;
 public class LoginController {
 
     @Resource
-    private  LoginService loginService;
+    private LoginService loginService;
 
-    @RequestMapping( value = "/admin/login", method = RequestMethod.POST)
+    @ResponseBody
+    @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
     public CommonResult login(@RequestBody User user) {
-        Boolean flag = loginService.findUser(user.getUsername(),user.getPassword());
-        if(flag != null)
-            return  CommonResult.success(user.getUsername());
+        Boolean flag = loginService.findUser(user.getUsername(), user.getPassword());
+        if (flag != null)
+            return CommonResult.success(user.getUsername());
         else
             return CommonResult.validateFailed();
-//        if (user.getUsername().equals("张三") && user.getPassword().equals("123456"))
-//            return CommonResult.success("张三");
-//        else
-//            return CommonResult.validateFailed();
     }
 }

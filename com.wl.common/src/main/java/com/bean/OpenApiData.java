@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OpenApiData {
-   private String apiData;
-   private int id;
+    private String apiData;
+    private int id;
 
     public String getApiData() {
         return apiData;

@@ -10,14 +10,20 @@ spring:
 
   application:
     name: ApiManager
+
   cloud:
+    inetutils:
+      preferred-networks: 192.168.2.4
     nacos:
       discovery:
-        server-addr: localhost:8848 #配置Nacos地址
+        server-addr: localhost:8848
+        service-name: ApiManager
+        hostname: 192.168.2.5
     sentinel:
       transport:
         dashboard: localhost:8080
         port: 8719
+
 
 management:
   endpoints:
@@ -40,3 +46,5 @@ server:
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   type-aliases-package: com.bean
+
+

@@ -3,23 +3,60 @@
 
 <mapper namespace="com.dao.ApiDao">
 
-    <insert id="insertApi" parameterType="OpenApiData" useGeneratedKeys="true"  keyProperty="id">
-        insert into openapilist(id,apiName,openApi,info,servers,methods,paths,requestBody,responseResult,group_api)
-        values(#{id},#{apiName},#{openApi},#{info},#{servers},#{methods},#{paths},#{requestBody},#{responseResult},#{group_api});
+    <insert id="insertApi" parameterType="OpenApiData" useGeneratedKeys="true" keyProperty="id">
+        insert into
+        openapilist(apiName,openApi,info,servers,methods,paths,requestBody,responseResult,group_api,input1,input2,input3,input11,input22,input33,parm_query)
+        values(#{apiName},#{openApi},#{info},#{servers},#{methods},#{paths},#{requestBody},#{responseResult},#{group_api},#{input1},#{input11},#{input2},#{input22},
+        #{input3},#{input33},#{parm_query,jdbcType=ARRAY,typeHandler=com.mybatis.handler.StringArrayTypeHandler});
     </insert>
 
-    <insert id="import_swagger" parameterType="OpenApiData" useGeneratedKeys="true"  keyProperty="openApiData.id">
-        insert into openapilist(apiName,openApi,info,servers,methods,paths,requestBody,responseResult)
-        values(#{apiName},#{openApi},#{info},#{servers},#{methods},#{paths},#{requestBody},#{responseResult});
-    </insert>
+    <insert id="saveApi" parameterType="OpenApiData" keyProperty="id">
+        update openapilist
+        set
+        id=#{id},apiName=#{apiName},openApi=#{openApi},info=#{info},servers=#{servers},methods=#{methods},paths=#{paths},
+        requestBody=#{requestBody},responseResult=#{responseResult},group_api=#{group_api},input1=#{input1},input2=#{input2},input3=#{input3},
+        input11=#{input11},input22=#{input22},input33=#{input33},parm_query=#{parm_query,jdbcType=ARRAY,typeHandler=com.mybatis.handler.StringArrayTypeHandler}
+        where id = #{id}
 
-    <select id="findAllApi"  resultType="OpenApiData">
-        select * from openapilist;
+    </insert>
+    <!--                                                                                                        直接写id，不能写属性.id-->
+    <!--    <insert id="import_swagger" parameterType="OpenApiData" useGeneratedKeys="true"  keyProperty="openApiData.id">-->
+    <!--        insert into openapilist(apiName,openApi,info,servers,methods,paths,requestBody,responseResult)-->
+    <!--        values(#{apiName},#{openApi},#{info},#{servers},#{methods},#{paths},#{requestBody},#{responseResult});-->
+    <!--    </insert>-->
+
+    <select id="findAllApi" resultType="OpenApiGroup">
+        SELECT * FROM openapilist o RIGHT OUTER JOIN apigroup a ON o.`group_api` = a.`apiGroup`
     </select>
 
-    <select id="findApiByName"  resultType="OpenApiData">
+    <select id="findAllGroup" resultType="ApiGroup">
+        select * from apigroup;
+    </select>
+    <select id="findGroupByName" resultType="ApiGroup" parameterType="String">
+        select * from apigroup where apiGroup=#{apiGroup}
+    </select>
+    <select id="findApiByName" resultType="OpenApiGroup" parameterType="String">
         select * from openapilist where apiName=#{apiName};
     </select>
+    <select id="findApiById" resultType="OpenApiData" parameterType="Integer">
+        select * from openapilist id=#{id};
+    </select>
+
+    <insert id="addApiGroup" parameterType="ApiGroup" useGeneratedKeys="true" keyProperty="id">
+        insert into apigroup (apiGroup)
+        values(#{apiGroup});
+    </insert>
+
+    <delete id="deleteApiGroup" parameterType="String">
+        DELETE FROM apigroup WHERE apiGroup= #{apiGroup}
+    </delete>
+
+    <delete id="deleteApiByGroup" parameterType="String">
+        DELETE FROM openapilist WHERE group_api= #{apiGroup}
+    </delete>
+    <delete id="deleteApi" parameterType="Integer">
+        delete from openapilist where id = #{id}
+    </delete>
     <!--<resultMap id="BaseResultMap" type="com.atguigu.springcloud.entities.Payment">-->
     <!--<id column="id" property="id" jdbcType="BIGINT"/>-->
     <!--<id column="serial" property="serial" jdbcType="VARCHAR"/>-->
@@ -27,5 +64,7 @@
     <!--<select id="getPaymentById" parameterType="Long" resultMap="BaseResultMap">-->
     <!--select * from payment where id=#{id};-->
     <!--</select>-->
-
+    <select id="findAllUser"  resultType="User">
+        select * from UserList;
+    </select>
 </mapper>
